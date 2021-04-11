@@ -1,0 +1,92 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'ru.vyarus.pom' version '2.1.0'
+    id 'org.springframework.boot' version "${springBoot}"
+    id 'io.spring.dependency-management' version "${dependencyManagement}"
+    id 'com.github.sherter.google-java-format' version '0.9'
+}
+
+sourceCompatibility = '1.8'
+
+// see https://github.com/sherter/google-java-format-gradle-plugin/issues/58
+if(JavaVersion.current() != JavaVersion.VERSION_1_8) {
+    googleJavaFormat {
+        options style: 'AOSP'
+    }
+
+    compileJava.dependsOn 'googleJavaFormat'
+}
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+subprojects {
+    group = 'com.github.eljaiek.machinery'
+    version = '0.0.1-SNAPSHOT'
+
+    apply plugin: 'java-library'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'ru.vyarus.pom'
+    apply from: "$rootDir/gradle/ext/publish-common.gradle"
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+
+        testCompileOnly 'org.projectlombok:lombok'
+        testAnnotationProcessor 'org.projectlombok:lombok'
+        testImplementation(platform("org.junit:junit-bom:${junit}"))
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    bootJar {
+        enabled = false
+    }
+
+    jar {
+        enabled = true
+    }
+
+    java {
+        withSourcesJar()
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+                pom { x -> pom(x)}
+            }
+        }
+
+        repositories {
+            maven { x -> nexusRepository(x) }
+        }
+    }
+}
+
+bootJar {
+    enabled = false
+}
