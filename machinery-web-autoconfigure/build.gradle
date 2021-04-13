@@ -1,29 +1,22 @@
-      dependencies {
 
-          implementation ('com.fasterxml.jackson.datatype:jackson-datatype-hppc') {
-              exclude group: 'com.carrotsearch', module: 'hppc'
-          }
+        configurations {
+            compileOnly {
+                extendsFrom annotationProcessor
+            }
+        }
 
-          implementation ('com.fasterxml.jackson.datatype:jackson-datatype-eclipse-collections') {
-              exclude group: 'org.eclipse.collections', module: 'eclipse-collections'
-          }
-
-          implementation ('com.fasterxml.jackson.datatype:jackson-datatype-joda-money') {
-              exclude group: 'org.joda', module: 'joda-money'
-          }
-
-          implementation ('com.fasterxml.jackson.datatype:jackson-datatype-json-org') {
-              exclude group: 'org.json', module: 'json'
-          }
-
+        dependencies {
+          implementation ('com.fasterxml.jackson.datatype:jackson-datatype-hppc')
+          implementation ('com.fasterxml.jackson.datatype:jackson-datatype-eclipse-collections')
+          implementation ('com.fasterxml.jackson.datatype:jackson-datatype-joda-money')
+          implementation ('com.fasterxml.jackson.datatype:jackson-datatype-json-org')
           implementation 'com.fasterxml.jackson.module:jackson-module-afterburner'
           implementation 'org.springframework.boot:spring-boot-starter'
 
+          annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
           testImplementation 'org.junit.jupiter:junit-jupiter'
           testImplementation "org.assertj:assertj-core:${assertjCore}"
-          testImplementation 'com.carrotsearch:hppc:0.8.1'
-          testImplementation 'org.eclipse.collections:eclipse-collections:9.1.0'
-          testImplementation 'org.joda:joda-money:1.0.1'
           testImplementation 'org.springframework.boot:spring-boot-starter-web'
           testImplementation 'org.springframework.boot:spring-boot-starter-test'
       }

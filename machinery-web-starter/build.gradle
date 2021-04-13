@@ -1,0 +1,9 @@
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    api (project(':machinery-web-autoconfigure')) {
+        exclude group: 'com.fasterxml.jackson.datatype', module: 'jackson-datatype-hppc'
+        exclude group: 'com.fasterxml.jackson.datatype', module: 'jackson-datatype-eclipse-collections'
+        exclude group: 'com.fasterxml.jackson.datatype', module: 'jackson-datatype-joda-money'
+        exclude group: 'com.fasterxml.jackson.datatype', module: 'jackson-datatype-json-org'
+    }
+}

@@ -1,6 +1,6 @@
 
 rootProject.name = 'machinery-web'
+
 include 'machinery-web-autoconfigure'
-//include 'machinery-web-starter'
-//include 'machinery-web-i8ln'
+include 'machinery-web-starter'
 

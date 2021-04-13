@@ -1,0 +1,11 @@
+{
+  "hints": [
+    {
+      "name": "machinery.web.jackson.performance-mode",
+      "values": [
+          {"value": "true", "description":  "Toggle performance mode On."},
+          {"value": "false", "description":  "Toggle performance mode Off."}
+      ]
+    }
+  ]
+}
