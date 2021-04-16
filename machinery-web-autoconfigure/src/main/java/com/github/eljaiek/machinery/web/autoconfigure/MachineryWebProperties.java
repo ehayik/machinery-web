@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConstructorBinding;
 @ConfigurationProperties(prefix = "machinery.web")
 class MachineryWebProperties {
 
-    /** Jackson addons configuration */
+    Iln8Properties i8ln;
     JacksonProperties jackson;
 
     @Value
@@ -20,5 +20,17 @@ class MachineryWebProperties {
          * after Spring Boot upgrades Jackson to version Jackson 2.12+.
          */
         boolean performanceMode;
+    }
+
+    @Value
+    static class Iln8Properties {
+        String paramName;
+        LocaleProperties locale;
+
+        @Value
+        static class LocaleProperties {
+            String paramName;
+            String setDefault;
+        }
     }
 }

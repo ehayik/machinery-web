@@ -6,10 +6,12 @@
         }
 
         dependencies {
-          implementation ('com.fasterxml.jackson.datatype:jackson-datatype-hppc')
-          implementation ('com.fasterxml.jackson.datatype:jackson-datatype-eclipse-collections')
-          implementation ('com.fasterxml.jackson.datatype:jackson-datatype-joda-money')
-          implementation ('com.fasterxml.jackson.datatype:jackson-datatype-json-org')
+          implementation 'org.springframework:spring-webmvc'
+
+          implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hppc'
+          implementation 'com.fasterxml.jackson.datatype:jackson-datatype-eclipse-collections'
+          implementation 'com.fasterxml.jackson.datatype:jackson-datatype-joda-money'
+          implementation 'com.fasterxml.jackson.datatype:jackson-datatype-json-org'
           implementation 'com.fasterxml.jackson.module:jackson-module-afterburner'
           implementation 'org.springframework.boot:spring-boot-starter'
 
@@ -19,4 +21,6 @@
           testImplementation "org.assertj:assertj-core:${assertjCore}"
           testImplementation 'org.springframework.boot:spring-boot-starter-web'
           testImplementation 'org.springframework.boot:spring-boot-starter-test'
+          testImplementation 'org.hibernate:hibernate-validator:7.0.1.Final'
+          testImplementation(project(':machinery-web-i8ln'))
       }
