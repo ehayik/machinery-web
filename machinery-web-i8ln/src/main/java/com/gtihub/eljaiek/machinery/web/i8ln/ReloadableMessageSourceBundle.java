@@ -1,17 +1,14 @@
 package com.gtihub.eljaiek.machinery.web.i8ln;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.MessageSource;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-
 import static org.springframework.context.i18n.LocaleContextHolder.getLocale;
 
-@Slf4j
-@RequiredArgsConstructor
-class MessageSourceBundle implements MessageBundle {
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
-    private final MessageSource messageSource;
+@RequiredArgsConstructor
+class ReloadableMessageSourceBundle implements MessageBundle {
+
+    private final ReloadableResourceBundleMessageSource messageSource;
 
     @Override
     public String getMessage(String code) {
@@ -30,14 +27,6 @@ class MessageSourceBundle implements MessageBundle {
 
     @Override
     public void register(String... basenames) {
-
-        if (messageSource instanceof ReloadableResourceBundleMessageSource) {
-            ((ReloadableResourceBundleMessageSource) messageSource).addBasenames(basenames);
-            return;
-        }
-
-        log.debug(
-                "Could not register resource bundles {}. MessageSource Bean isn't instance of ReloadableResourceBundleMessageSource",
-                (Object) basenames);
+        messageSource.addBasenames(basenames);
     }
 }

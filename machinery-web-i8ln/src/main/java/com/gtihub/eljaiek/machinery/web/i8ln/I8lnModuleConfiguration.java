@@ -15,7 +15,7 @@ class I8lnModuleConfiguration {
     @ConditionalOnMissingBean
     public MessageSource messageSource() {
         val messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("classpath:messages");
+        messageSource.setBasename("classpath:i8ln/messages");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
@@ -29,7 +29,7 @@ class I8lnModuleConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public MessageBundle messageBundle(MessageSource messageSource) {
-        return new MessageSourceBundle(messageSource);
+    public MessageBundle messageBundle(ReloadableResourceBundleMessageSource messageSource) {
+        return new ReloadableMessageSourceBundle(messageSource);
     }
 }
