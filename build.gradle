@@ -11,6 +11,7 @@ plugins {
     id 'org.springframework.boot' version "${springBoot}"
     id 'io.spring.dependency-management' version "${dependencyManagement}"
     id 'com.github.sherter.google-java-format' version '0.9'
+    id 'pl.allegro.tech.build.axion-release' version '1.13.2'
 }
 
 sourceCompatibility = '1.8'
@@ -34,9 +35,11 @@ configurations {
     }
 }
 
+project.version = scmVersion.version
+
 subprojects {
     group = 'com.github.eljaiek.machinery'
-    version = '0.0.1-SNAPSHOT'
+    version = rootProject.version
 
     apply plugin: 'java-library'
     apply plugin: 'org.springframework.boot'
