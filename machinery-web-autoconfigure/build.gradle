@@ -6,7 +6,7 @@
         }
 
         dependencies {
-          implementation 'org.springframework:spring-webmvc:5.3.5'
+          implementation 'org.springframework:spring-webmvc'
 
           implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hppc'
           implementation 'com.fasterxml.jackson.datatype:jackson-datatype-eclipse-collections'
