@@ -25,10 +25,6 @@ if(JavaVersion.current() != JavaVersion.VERSION_1_8) {
     compileJava.dependsOn 'googleJavaFormat'
 }
 
-repositories {
-    mavenCentral()
-}
-
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
@@ -36,6 +32,16 @@ configurations {
 }
 
 project.version = scmVersion.version
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+
+    bootJar {
+        enabled = false
+    }
+}
 
 subprojects {
     group = 'com.github.eljaiek.machinery'
@@ -46,10 +52,6 @@ subprojects {
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'ru.vyarus.pom'
     apply from: "$rootDir/gradle/ext/publish-common.gradle"
-
-    repositories {
-        mavenCentral()
-    }
 
     dependencies {
         compileOnly 'org.projectlombok:lombok'
@@ -88,8 +90,4 @@ subprojects {
             maven { x -> nexusRepository(x) }
         }
     }
-}
-
-bootJar {
-    enabled = false
 }
