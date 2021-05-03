@@ -1,19 +1,16 @@
 package com.github.eljaiek.machinery.web.autoconfigure;
 
-import static org.springframework.boot.autoconfigure.condition.ConditionalOnJava.Range.OLDER_THAN;
-import static org.springframework.boot.system.JavaVersion.NINE;
-
 import com.fasterxml.jackson.databind.Module;
-import com.fasterxml.jackson.datatype.eclipsecollections.EclipseCollectionsModule;
-import com.fasterxml.jackson.datatype.hppc.HppcModule;
-import com.fasterxml.jackson.datatype.jodamoney.JodaMoneyModule;
-import com.fasterxml.jackson.datatype.jsonorg.JsonOrgModule;
 import com.fasterxml.jackson.module.afterburner.AfterburnerModule;
+import lombok.SneakyThrows;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnJava;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import static org.springframework.boot.autoconfigure.condition.ConditionalOnJava.Range.OLDER_THAN;
+import static org.springframework.boot.system.JavaVersion.NINE;
 
 @Configuration
 @SuppressWarnings({"unused", "java:S1118"})
@@ -75,6 +72,14 @@ class JacksonAddonsConfiguration {
     @Configuration
     static class EnableMiscModulesAutoRegistration {
 
+        static final String JSON_ORG_MODULE =
+                "com.fasterxml.jackson.datatype.jsonorg.JsonOrgModule";
+        static final String ECLIPSE_COLLECTIONS_MODULE =
+                "com.fasterxml.jackson.datatype.eclipsecollections.EclipseCollectionsModule";
+        static final String HPPC_MODULE = "com.fasterxml.jackson.datatype.hppc.HppcModule";
+        static final String JODA_MONEY_MODULE =
+                "com.fasterxml.jackson.datatype.jodamoney.JodaMoneyModule";
+
         /**
          * Supports JSON serialization and deserialization of "org.json" JSON library datatypes.
          *
@@ -83,9 +88,14 @@ class JacksonAddonsConfiguration {
          * @return module to be registered
          */
         @Bean
-        @ConditionalOnClass(name = "com.fasterxml.jackson.datatype.jsonorg.JsonOrgModule")
+        @ConditionalOnClass(name = JSON_ORG_MODULE)
         Module jsonObjectModule() {
-            return new JsonOrgModule();
+            return loadJacksonModule(JSON_ORG_MODULE);
+        }
+
+        @SneakyThrows
+        private static Module loadJacksonModule(String moduleName) {
+            return (Module) Class.forName(moduleName).newInstance();
         }
 
         /**
@@ -97,9 +107,9 @@ class JacksonAddonsConfiguration {
          * @return module to be registered
          */
         @Bean
-        @ConditionalOnClass(name = "com.fasterxml.jackson.datatype.hppc.HppcModule")
+        @ConditionalOnClass(name = HPPC_MODULE)
         Module hppcModule() {
-            return new HppcModule();
+            return loadJacksonModule(HPPC_MODULE);
         }
 
         /**
@@ -108,10 +118,9 @@ class JacksonAddonsConfiguration {
          * @return module to be registered
          */
         @Bean
-        @ConditionalOnClass(
-                name = "com.fasterxml.jackson.datatype.eclipsecollections.EclipseCollectionsModule")
+        @ConditionalOnClass(name = ECLIPSE_COLLECTIONS_MODULE)
         Module eclipseCollectionsModule() {
-            return new EclipseCollectionsModule();
+            return loadJacksonModule(ECLIPSE_COLLECTIONS_MODULE);
         }
 
         /**
@@ -120,9 +129,9 @@ class JacksonAddonsConfiguration {
          * @return module to be registered
          */
         @Bean
-        @ConditionalOnClass(name = "com.fasterxml.jackson.datatype.jodamoney.JodaMoneyModule")
+        @ConditionalOnClass(name = JODA_MONEY_MODULE)
         Module jodaMoneyModule() {
-            return new JodaMoneyModule();
+            return loadJacksonModule(JODA_MONEY_MODULE);
         }
     }
 }
