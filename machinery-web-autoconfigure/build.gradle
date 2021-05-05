@@ -6,7 +6,6 @@ configurations {
 
 dependencies {
     implementation 'org.springframework:spring-webmvc'
-
     implementation 'com.fasterxml.jackson.module:jackson-module-afterburner'
     implementation 'org.springframework.boot:spring-boot-starter'
 
@@ -14,13 +13,13 @@ dependencies {
 
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation "org.assertj:assertj-core:${assertjCore}"
-    testImplementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.hibernate:hibernate-validator:7.0.1.Final'
-    testImplementation(project(':machinery-web-i8ln'))
 
+    testImplementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'com.fasterxml.jackson.datatype:jackson-datatype-hppc'
     testImplementation 'com.fasterxml.jackson.datatype:jackson-datatype-eclipse-collections'
     testImplementation 'com.fasterxml.jackson.datatype:jackson-datatype-joda-money'
     testImplementation 'com.fasterxml.jackson.datatype:jackson-datatype-json-org'
+
+    testImplementation(project(':machinery-web-i8ln'))
 }
