@@ -1,5 +1,8 @@
 package com.github.eljaiek.machinery.web.autoconfigure;
 
+import static org.springframework.boot.autoconfigure.condition.ConditionalOnJava.Range.OLDER_THAN;
+import static org.springframework.boot.system.JavaVersion.NINE;
+
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.module.afterburner.AfterburnerModule;
 import lombok.SneakyThrows;
@@ -8,9 +11,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnJava;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import static org.springframework.boot.autoconfigure.condition.ConditionalOnJava.Range.OLDER_THAN;
-import static org.springframework.boot.system.JavaVersion.NINE;
 
 @Configuration
 @SuppressWarnings({"unused", "java:S1118"})
