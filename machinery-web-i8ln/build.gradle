@@ -1,6 +1,6 @@
 dependencies {
     implementation 'org.springframework.boot:spring-boot-autoconfigure'
     implementation 'org.springframework:spring-context'
-    implementation 'org.hibernate.validator:hibernate-validator'
+    implementation 'org.hibernate.validator:hibernate-validator:6.1.7.Final'
     implementation 'org.slf4j:slf4j-api'
 }

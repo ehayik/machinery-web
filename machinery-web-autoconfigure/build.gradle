@@ -5,7 +5,7 @@ configurations {
 }
 
 dependencies {
-    implementation 'org.springframework:spring-webmvc'
+    implementation 'org.springframework:spring-webmvc:5.3.6'
     implementation 'com.fasterxml.jackson.module:jackson-module-afterburner'
     implementation 'org.springframework.boot:spring-boot-starter'
 
