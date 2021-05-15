@@ -111,3 +111,7 @@ subprojects {
         }
     }
 }
+
+task publishAll(type: GradleBuild) {
+    tasks = [ 'publish' ]
+}
