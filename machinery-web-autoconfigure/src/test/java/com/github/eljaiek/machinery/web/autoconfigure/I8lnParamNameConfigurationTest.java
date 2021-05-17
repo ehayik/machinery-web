@@ -24,7 +24,7 @@ class I8lnParamNameConfigurationTest {
     void defaultLocaleChangeInterceptorConfigShouldWork() {
         // When
         val message =
-                mockMvc.perform(get("/greeting").param("locale", "es"))
+                mockMvc.perform(get("/greeting").param("locale", "es_CU"))
                         .andExpect(status().isOk())
                         .andReturn()
                         .getResponse()

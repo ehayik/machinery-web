@@ -14,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
-class JacksonPerformanceModeConfigTest {
+class JacksonPerformanceModeConfigTests {
 
     @Autowired ObjectMapper objectMapper;
 

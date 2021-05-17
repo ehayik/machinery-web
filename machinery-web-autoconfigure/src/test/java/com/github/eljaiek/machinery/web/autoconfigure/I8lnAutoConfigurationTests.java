@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @TestInstance(PER_CLASS)
 @WebMvcTest(MessageController.class)
-class I8lnAutoConfigurationTest {
+class I8lnAutoConfigurationTests {
 
     static final String LOCALE_COOKIE = "machinery.web.i8ln.locale";
 
@@ -52,7 +52,7 @@ class I8lnAutoConfigurationTest {
     void defaultLocaleChangeInterceptorConfigShouldWork() {
         // When
         val message =
-                mockMvc.perform(get("/greeting").param("lang", "es"))
+                mockMvc.perform(get("/greeting").param("lang", "es_CU"))
                         .andExpect(status().isOk())
                         .andExpect(cookie().exists(LOCALE_COOKIE))
                         .andReturn()

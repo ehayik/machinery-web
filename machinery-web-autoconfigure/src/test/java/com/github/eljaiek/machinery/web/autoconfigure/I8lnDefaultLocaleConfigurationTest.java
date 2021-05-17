@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(
         controllers = MessageController.class,
-        properties = "machinery.web.iln8.locale.set-default=es")
+        properties = "machinery.web.iln8.locale.set-default=es_CU")
 class I8lnDefaultLocaleConfigurationTest {
 
     @Autowired MockMvc mockMvc;

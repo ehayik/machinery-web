@@ -17,7 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
-class JacksonMiscModulesAutoRegistrationTest {
+class JacksonAddonsConfigurationTests {
 
     @Autowired ObjectMapper objectMapper;
 

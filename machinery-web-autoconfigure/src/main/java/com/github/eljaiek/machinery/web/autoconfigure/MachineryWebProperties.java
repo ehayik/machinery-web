@@ -24,13 +24,30 @@ class MachineryWebProperties {
 
     @Value
     static class Iln8Properties {
-        String paramName;
+
         LocaleProperties locale;
 
         @Value
         static class LocaleProperties {
+            /**
+             * Set the name of the parameter that contains a locale specification in a locale change
+             * request. Default is "lang"
+             */
             String paramName;
+
+            /** Set a default Locale that will be return if no other locale found. */
             String setDefault;
+
+            /**
+             * Set locale resolution strategy that allows for both locale resolution via the request
+             * and locale modification via request and response. Default is "COOKIE"
+             */
+            LocaleResolverStrategy resolverStrategy;
+        }
+
+        enum LocaleResolverStrategy {
+            COOKIE,
+            SESSION
         }
     }
 }
