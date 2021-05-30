@@ -115,3 +115,7 @@ subprojects {
 task publishAll(type: GradleBuild) {
     tasks = [ 'publish' ]
 }
+
+task publishAllToMavenLocal(type: GradleBuild) {
+    tasks = [ 'publishToMavenLocal' ]
+}
