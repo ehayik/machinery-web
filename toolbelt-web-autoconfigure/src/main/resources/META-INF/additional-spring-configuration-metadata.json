@@ -1,0 +1,30 @@
+{
+  "hints": [
+    {
+      "name": "toolbelt.web.jackson.performance-mode",
+      "values": [
+        {
+          "value": "true",
+          "description": "Toggle performance mode On."
+        },
+        {
+          "value": "false",
+          "description": "Toggle performance mode Off."
+        }
+      ]
+    },
+    {
+      "name": "toolbelt.web.iln8.locale.resolver-strategy",
+      "values": [
+        {
+          "value": "COOKIE",
+          "description": "Uses a cookie sent back to the user in case of a custom setting, with a fallback to the specified default locale or the request's accept-header locale. The generated cookie's name is \"toolbelt.web.i8ln.locale\"."
+        },
+        {
+          "value": "SESSION",
+          "description": "Uses a locale attribute in the user's session in case of a custom setting, with a fallback to the specified default locale or the request's accept-header locale."
+        }
+      ]
+    }
+  ]
+}
