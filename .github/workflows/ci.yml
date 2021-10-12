@@ -1,5 +1,5 @@
 
-name: Machinery Web build CI
+name: Toolbelt Web build CI
 
 on:
   push:

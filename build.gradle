@@ -41,6 +41,10 @@ configurations {
 
 project.version = scmVersion.version
 
+jacoco {
+    toolVersion = "0.8.2"
+}
+
 allprojects {
     repositories {
         mavenCentral()
@@ -52,7 +56,7 @@ allprojects {
 }
 
 subprojects {
-    group = 'com.github.eljaiek.machinery'
+    group = 'com.github.ehayik.toolbelt'
     version = rootProject.version
 
     apply plugin: 'java-library'
